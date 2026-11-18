@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unsubscribe</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background:#EDEFE8; display:grid; place-items:center; min-height:100vh; margin:0; color:#15161A; }
+    .card { background:#fff; padding:2rem; border-radius:8px; max-width:380px; }
+    button { width:100%; padding:.8rem; border:0; border-radius:6px; font-size:1rem; cursor:pointer; background:#15161A; color:#fff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    {% if done %}
+      <h2>You're unsubscribed</h2>
+      <p>{{ subscriber.email }} won't get any more newsletters from us.</p>
+    {% else %}
+      <h2>Unsubscribe?</h2>
+      <p>Stop sending newsletters to {{ subscriber.email }}?</p>
+      <form method="post">{% csrf_token %}<button type="submit">Yes, unsubscribe me</button></form>
+    {% endif %}
+  </div>
+</body>
+</html>
