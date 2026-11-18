@@ -1,0 +1,262 @@
+/* =====================================================================
+   HERO (Hero.jsx): a dark showcase panel with one floating product.
+   Everything is prefixed .hx- so it can't clash with older .hero-* rules in index.css.
+   Colours come from the site tokens: --ink --paper --accent --white --line
+   ===================================================================== */
+
+.hx{
+  background:var(--paper);
+  padding:clamp(10px,1.6vw,22px) clamp(10px,1.6vw,22px) 0;
+}
+
+.hx-panel{
+  --px:0; --py:0;                         /* mouse parallax, set from Hero.jsx */
+  position:relative; isolation:isolate; overflow:hidden;
+  min-height:clamp(580px,88vh,800px);
+  border-radius:clamp(18px,2.4vw,32px);
+  color:var(--white);
+  background:radial-gradient(95% 85% at 50% 44%, #2C3039 0%, #1C1E25 58%, #121318 100%);
+}
+
+/* soft orange light behind the shoe + a shadow on the "floor" under it */
+.hx-glow{
+  position:absolute; left:50%; top:47%; z-index:0; pointer-events:none;
+  width:min(66%,860px); aspect-ratio:1;
+  transform:translate(-50%,-50%) translate(calc(var(--px) * -14px), calc(var(--py) * -12px));
+  background:radial-gradient(closest-side, rgba(255,98,36,.34), rgba(255,98,36,.12) 46%, transparent 72%);
+  transition:transform .4s ease-out;
+}
+.hx-floor{
+  position:absolute; left:50%; top:calc(47% + min(17%,150px)); z-index:1;
+  width:min(40%,520px); height:34px;
+  transform:translateX(-50%);
+  background:radial-gradient(closest-side, rgba(0,0,0,.7), transparent);
+  filter:blur(5px);
+  animation:hx-fade .9s ease .3s both;
+}
+
+/* a "scene" = everything that changes from slide to slide */
+.hx-scene{ position:absolute; inset:0; }
+@keyframes hx-fade{ from{ opacity:0; } to{ opacity:1; } }
+
+/* ---------------------------------------------------------------- watermark */
+.hx-watermark{
+  position:absolute; top:5%; right:-1%; z-index:0;
+  font-family:'Archivo Expanded','Archivo',sans-serif; font-weight:800;
+  font-size:clamp(110px,19vw,290px); line-height:.9; letter-spacing:-.04em;
+  color:rgba(255,255,255,.05);
+  white-space:nowrap; user-select:none; pointer-events:none;
+  transform:translate(calc(var(--px) * 8px), calc(var(--py) * 6px));
+  transition:transform .4s ease-out;
+  animation:hx-fade 1.2s ease both;
+}
+
+/* ---------------------------------------------------------------- left copy */
+.hx-copy{
+  position:absolute; left:clamp(24px,5.5vw,84px); top:clamp(40px,11%,96px); z-index:3;
+  width:min(34%,440px);
+}
+.hx-title{
+  margin:0 0 14px;
+  font-size:clamp(30px,4.2vw,62px); font-weight:800; line-height:1; letter-spacing:-.025em;
+  text-transform:uppercase; text-wrap:balance;
+  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;  /* long names stop at 3 lines */
+  animation:hx-title-in .9s cubic-bezier(.2,.8,.2,1) .15s both;
+}
+@keyframes hx-title-in{ from{ opacity:0; transform:translateX(-28px); } to{ opacity:1; transform:none; } }
+
+.hx-chips{ display:flex; gap:8px; margin:0 0 22px; min-height:0; animation:hx-fade .8s ease .5s both; }
+.hx-chips:empty{ display:none; }
+.hx-badge{
+  padding:4px 12px; border-radius:999px;
+  background:var(--accent); color:var(--white); font-size:12px; font-weight:700;
+}
+.hx-badge--sale{ background:var(--white); color:var(--ink); }
+
+.hx-sizes{ animation:hx-fade .8s ease .6s both; }
+.hx-sizes small{ display:block; margin-bottom:8px; font-size:13px; color:rgba(255,255,255,.62); }
+.hx-sizes span{ display:flex; flex-wrap:wrap; gap:6px; }
+.hx-sizes i{
+  min-width:30px; padding:4px 8px; text-align:center; font-style:normal;
+  border:1px solid rgba(255,255,255,.35); border-radius:6px;
+  font-size:13px; font-variant-numeric:tabular-nums; text-transform:capitalize;
+}
+
+/* ---------------------------------------------------------------- the shoe */
+.hx-shoe{
+  position:absolute; left:50%; top:47%; z-index:2;
+  width:min(54%,740px);
+  transform:translate(-50%,-50%) translate(calc(var(--px) * 14px), calc(var(--py) * 10px));
+  transition:transform .4s ease-out;
+}
+.hx-shoe-img{
+  aspect-ratio:4/3;
+  transform:rotate(-8deg);
+  animation:hx-shoe-in 1s cubic-bezier(.2,.8,.2,1) both;
+  transition:opacity .45s ease;
+}
+@keyframes hx-shoe-in{
+  from{ opacity:0; transform:translateX(9%) translateY(4%) rotate(2deg) scale(.9); }
+  to{ opacity:1; transform:rotate(-8deg); }
+}
+.hx-shoe-img img{ display:block; width:100%; height:100%; object-fit:contain; }
+
+/* How the picture is shown depends on what lib/imageKind.js found:
+   cutout (transparent)  -> floats freely, tilted, with a real drop shadow: the full effect
+   light / dark / photo  -> a clean rounded photo card (a plain white box on a dark page would look broken) */
+.hx-kind-pending .hx-shoe-img{ opacity:0; }       /* hidden for a split second while we look at the picture */
+.hx-kind-cutout img{ filter:drop-shadow(0 26px 28px rgba(0,0,0,.55)); }
+
+.hx-kind-light, .hx-kind-dark, .hx-kind-photo{
+  left:56%; top:49%; width:min(42%,580px);          /* smaller and nudged right so it never touches the title */
+}
+.hx-kind-light .hx-shoe-img, .hx-kind-dark .hx-shoe-img, .hx-kind-photo .hx-shoe-img{
+  transform:rotate(-2deg);
+  animation-name:hx-card-in;
+}
+.hx-kind-light img, .hx-kind-dark img, .hx-kind-photo img{
+  border-radius:22px; box-shadow:0 34px 70px rgba(0,0,0,.55);
+  border:1px solid rgba(255,255,255,.08);
+}
+.hx-kind-light img{ object-fit:contain; background:#fff; }
+.hx-kind-dark img, .hx-kind-photo img{ object-fit:cover; }
+@keyframes hx-card-in{
+  from{ opacity:0; transform:translateY(6%) scale(.94) rotate(-2deg); }
+  to{ opacity:1; transform:rotate(-2deg); }
+}
+
+/* ---------------------------------------------------------------- buy row */
+.hx-buy{
+  position:absolute; left:50%; bottom:clamp(40px,8%,72px); z-index:3;
+  display:flex; align-items:center; gap:clamp(16px,2.4vw,34px);
+  transform:translateX(-50%);
+  animation:hx-fade .8s ease .65s both;
+}
+.hx-price{ display:flex; flex-direction:column; line-height:1.15; font-variant-numeric:tabular-nums; }
+.hx-price strong{ font-size:clamp(17px,1.6vw,22px); }
+.hx-price del{ font-size:13px; color:rgba(255,255,255,.55); }
+.hx-cta{
+  display:inline-block; padding:15px clamp(24px,3vw,40px);
+  background:var(--accent); color:var(--white); border:0; border-radius:4px;
+  font-size:14px; font-weight:700; letter-spacing:.02em; white-space:nowrap;
+  transition:background .2s ease, transform .2s ease;
+}
+.hx-cta:hover{ background:#FF6A3D; transform:translateY(-2px); }
+
+.hx-explore{
+  position:absolute; left:clamp(24px,5.5vw,84px); bottom:clamp(40px,8%,72px); z-index:3;
+  display:flex; align-items:center; gap:14px; padding:8px 0;
+  font-size:14px; font-weight:600; color:var(--white);
+  animation:hx-fade .8s ease .75s both;
+}
+.hx-explore::before{ content:""; width:54px; height:6px; background:var(--accent); transition:width .25s ease; }
+.hx-explore:hover::before{ width:78px; }
+
+/* ---------------------------------------------------------------- side cards */
+.hx-side{
+  position:absolute; bottom:clamp(120px,27%,230px); z-index:3;
+  display:flex; align-items:center; gap:12px;
+  width:min(23%,250px); padding:12px 14px;
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08);
+  color:var(--white); text-align:left;
+  backdrop-filter:blur(6px);
+  transition:background .25s ease, transform .25s ease;
+  animation:hx-fade .8s ease .8s both;
+}
+.hx-side:hover{ background:rgba(255,255,255,.12); }
+.hx-side--prev{ left:0; border-radius:0 12px 12px 0; padding-left:clamp(14px,2vw,28px); }
+.hx-side--next{ right:0; border-radius:12px 0 0 12px; padding-right:clamp(14px,2vw,28px); flex-direction:row; }
+.hx-side--prev:hover{ transform:translateX(4px); }
+.hx-side--next:hover{ transform:translateX(-4px); }
+.hx-side img{ width:46px; height:46px; flex:none; object-fit:contain; background:rgba(255,255,255,.9); border-radius:6px; }
+.hx-side-text{ min-width:0; display:block; }
+.hx-side-text small{ display:block; font-size:12px; color:rgba(255,255,255,.55); }
+.hx-side-text strong{ display:block; font-size:13px; line-height:1.3;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.hx-side-arrow{ font-size:12px; color:rgba(255,255,255,.7); flex:none; }
+.hx-side-arrow--orange{
+  width:34px; height:34px; display:grid; place-items:center;
+  border:1.5px solid var(--accent); border-radius:50%; color:var(--accent);
+  margin-left:auto;
+}
+
+/* ---------------------------------------------------------------- bottom-centre controls */
+.hx-nav{
+  position:absolute; left:50%; bottom:clamp(12px,2.4%,22px); z-index:4;
+  display:flex; align-items:center; gap:14px; transform:translateX(-50%);
+}
+.hx-segments{ display:flex; gap:6px; }
+.hx-segment{ position:relative; width:clamp(26px,3.4vw,44px); height:20px; padding:0; background:transparent; border:0; }
+.hx-segment::before{
+  content:""; position:absolute; left:0; right:0; top:50%; height:3px; margin-top:-1.5px;
+  background:rgba(255,255,255,.2); border-radius:2px;
+}
+.hx-segment.is-done::before{ background:rgba(255,255,255,.75); }
+.hx-segment-fill{
+  position:absolute; left:0; top:50%; height:3px; margin-top:-1.5px; width:100%;
+  background:var(--accent); border-radius:2px; transform-origin:left center;
+  animation:hx-fill linear both;          /* duration comes from Hero.jsx */
+}
+@keyframes hx-fill{ from{ transform:scaleX(0); } to{ transform:scaleX(1); } }
+.hx-pause{
+  width:28px; height:28px; display:grid; place-items:center;
+  border:1px solid rgba(255,255,255,.3); border-radius:50%;
+  background:transparent; color:rgba(255,255,255,.8); font-size:10px;
+}
+.hx-pause:hover{ background:rgba(255,255,255,.15); }
+
+.hx :is(button,a):focus-visible{ outline:2px solid #fff; outline-offset:3px; }
+
+/* ---------------------------------------------------------------- fallback (no products yet) */
+.hx-panel--fallback{
+  display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:clamp(24px,4vw,64px);
+  padding:clamp(28px,5vw,72px);
+}
+.hx-fb-copy{ position:relative; z-index:2; }
+.hx-panel--fallback .hx-title{ -webkit-line-clamp:unset; display:block; }
+.hx-fb-desc{ max-width:42ch; margin:0 0 26px; font-size:clamp(15px,1.3vw,18px); line-height:1.6; color:rgba(255,255,255,.72); }
+.hx-fb-photo{ position:relative; z-index:2; width:100%; height:min(60vh,520px); object-fit:cover; border-radius:22px; box-shadow:0 34px 70px rgba(0,0,0,.5); }
+
+/* ---------------------------------------------------------------- tablet / phone */
+@media (max-width:900px){
+  .hx-panel{ min-height:0; padding:30px 22px 64px; display:flex; flex-direction:column; align-items:center; text-align:center; }
+  .hx-scene{ position:relative; inset:auto; width:100%; display:flex; flex-direction:column; align-items:center; }
+  .hx-watermark{ top:2%; right:auto; left:50%; transform:translateX(-50%); font-size:clamp(96px,30vw,200px); }
+
+  .hx-copy{ position:static; width:100%; }
+  .hx-title{ font-size:clamp(28px,8vw,44px); -webkit-line-clamp:2; }
+  .hx-chips{ justify-content:center; margin-bottom:14px; }
+  .hx-sizes{ display:none; }                      /* size chips live on the product page on small screens */
+
+  .hx-glow{ top:36%; width:110%; }
+  .hx-floor{ display:none; }
+  .hx-shoe, .hx-kind-light, .hx-kind-dark, .hx-kind-photo{
+    position:relative; left:auto; top:auto; width:min(92%,520px); margin:6px 0 0;
+    transform:translate(calc(var(--px) * 8px), 0);
+  }
+  .hx-kind-light, .hx-kind-dark, .hx-kind-photo{ width:min(80%,440px); }
+
+  .hx-buy{ position:static; transform:none; margin-top:8px; }
+  .hx-explore{ position:static; margin-top:18px; }
+
+  /* side cards shrink to two round arrows floating over the left/right of the shoe */
+  .hx-side{
+    top:36%; bottom:auto; width:42px; height:42px; padding:0; justify-content:center;
+    border-radius:50%; transform:translateY(-50%);
+  }
+  .hx-side--prev, .hx-side--next{ border-radius:50%; padding:0; }
+  .hx-side:hover, .hx-side--prev:hover, .hx-side--next:hover{ transform:translateY(-50%); }
+  .hx-side--prev{ left:6px; }
+  .hx-side--next{ right:6px; }
+  .hx-side img, .hx-side-text{ display:none; }
+  .hx-side-arrow--orange{ border:0; width:auto; height:auto; margin:0; color:var(--white); }
+
+  .hx-nav{ bottom:18px; }
+  .hx-panel--fallback{ grid-template-columns:1fr; text-align:left; align-items:start; }
+  .hx-fb-photo{ height:300px; }
+}
+
+/* ---------------------------------------------------------------- reduced motion */
+@media (prefers-reduced-motion:reduce){
+  .hx *, .hx *::before, .hx *::after{ animation:none !important; transition:none !important; }
+}
