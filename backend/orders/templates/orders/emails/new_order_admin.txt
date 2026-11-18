@@ -1,0 +1,10 @@
+{% autoescape off %}New order {{ order.reference }}
+
+Customer: {{ order.full_name }}, {{ order.phone }}{% if order.email %}, {{ order.email }}{% endif %}
+Ship to: {{ order.address }}, {{ order.city }}
+Payment: {{ method_label }}{% if paid %} (PAID){% endif %}
+
+{% for item in items %}- {{ item.name }}{% if item.size %} (size {{ item.size }}){% endif %} x {{ item.quantity }}
+{% endfor %}
+Total: {{ order.subtotal|floatformat:2 }} LKR
+{% endautoescape %}

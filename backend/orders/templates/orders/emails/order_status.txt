@@ -1,0 +1,10 @@
+{% autoescape off %}Hi {{ order.full_name }},
+
+{% if status == "shipped" %}Good news - your order {{ order.reference }} is on its way to {{ order.address }}, {{ order.city }}.
+{% elif status == "delivered" %}Your order {{ order.reference }} has been delivered. We hope you love it!
+{% elif status == "cancelled" %}Your order {{ order.reference }} has been cancelled. If you were charged for it, please reply to this email or contact us so we can sort it out.
+{% endif %}
+View your order: {{ order_url }}
+
+- {{ shop_name }}
+{% endautoescape %}

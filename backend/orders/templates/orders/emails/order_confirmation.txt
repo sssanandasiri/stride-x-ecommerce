@@ -1,0 +1,19 @@
+{% autoescape off %}Hi {{ order.full_name }},
+
+Thank you for your order at {{ shop_name }}!
+Order number: {{ order.reference }}
+
+{% for item in items %}- {{ item.name }}{% if item.size %} (size {{ item.size }}){% endif %} x {{ item.quantity }}: {{ item.line_total|floatformat:2 }} LKR
+{% endfor %}
+Total: {{ order.subtotal|floatformat:2 }} LKR
+Payment: {{ method_label }}{% if paid %} - payment received, thank you!{% elif order.payment_method == "cod" %} - please pay when your order arrives.{% endif %}
+
+Delivering to:
+{{ order.full_name }}
+{{ order.address }}, {{ order.city }}
+{{ order.phone }}
+
+View your order: {{ order_url }}
+
+- {{ shop_name }}
+{% endautoescape %}

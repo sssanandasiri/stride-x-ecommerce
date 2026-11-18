@@ -1,0 +1,12 @@
+<div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:auto;color:#111">
+  <h2>Hi {{ order.full_name }},</h2>
+  {% if status == "shipped" %}
+    <p>Good news &mdash; your order <strong>{{ order.reference }}</strong> is on its way to {{ order.address }}, {{ order.city }}.</p>
+  {% elif status == "delivered" %}
+    <p>Your order <strong>{{ order.reference }}</strong> has been delivered. We hope you love it!</p>
+  {% elif status == "cancelled" %}
+    <p>Your order <strong>{{ order.reference }}</strong> has been cancelled. If you were charged for it, please reply to this email or contact us so we can sort it out.</p>
+  {% endif %}
+  <p><a href="{{ order_url }}" style="color:#111">View your order</a></p>
+  <p style="color:#777;font-size:12px">{{ shop_name }}</p>
+</div>
