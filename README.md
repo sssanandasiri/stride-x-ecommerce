@@ -1,10 +1,11 @@
-# StrideX — full stack (React + Django + MySQL)
+StrideX — full stack (React + Django + MySQL)
 
 ```
 stridex-fullstack/
   frontend/   your React app (already patched to call the API)
   backend/    Django REST API + MySQL
 ```
+
 
 ## 1. Install once
 - Python 3.10+  ·  Node 18+  ·  MySQL 8 (MariaDB 10.5+ also works)
@@ -118,3 +119,18 @@ it only works when `PAYMENT_MODE=sandbox`).
 - **Admin says "Incorrect username or password"** → use the account from `createsuperuser` (must be staff).
 - **Broken product images** → add the image files to `frontend/public/images/`.
 - **Changed models.py?** → `python manage.py makemigrations` then `migrate`.
+
+### 11. No-Code Admin Dashboard
+
+StrideX includes a dedicated admin dashboard that allows shop owners to manage their online store without writing or modifying code.
+
+**Admin capabilities:**
+- Add, edit and delete products.
+- Upload new product images.
+- Replace or remove existing product images.
+- Update product prices and discounts.
+- Manage stock quantities and available shoe sizes.
+- View and manage customer orders.
+- Manage the store through a centralized interface.
+
+This provides shop owners with an easier way to maintain and update their online store independently.
