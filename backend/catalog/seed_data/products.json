@@ -1,0 +1,482 @@
+[
+  {
+    "id": "nike-dunk-panda",
+    "brand": "Nike",
+    "name": "Nike Dunk Low Panda",
+    "category": "shoes",
+    "image": "/images/panda.avif",
+    "badge": "New",
+    "rating": 5,
+    "reviews": 302,
+    "price": 7500,
+    "salePrice": null,
+    "sizes": [
+      {
+        "size": "39",
+        "stock": 5
+      },
+      {
+        "size": "40",
+        "stock": 6
+      },
+      {
+        "size": "41",
+        "stock": 6
+      },
+      {
+        "size": "42",
+        "stock": 5
+      },
+      {
+        "size": "43",
+        "stock": 3
+      }
+    ],
+    "stock": 25
+  },
+  {
+    "id": "nike-air-max-olive",
+    "brand": "Nike",
+    "name": "Nike Air Max — Olive",
+    "category": "shoes",
+    "image": "/images/olive.webp",
+    "badge": null,
+    "rating": 4,
+    "reviews": 94,
+    "price": 8200,
+    "salePrice": null,
+    "sizes": [
+      {
+        "size": "40",
+        "stock": 1
+      },
+      {
+        "size": "41",
+        "stock": 2
+      },
+      {
+        "size": "42",
+        "stock": 3
+      },
+      {
+        "size": "43",
+        "stock": 0
+      },
+      {
+        "size": "44",
+        "stock": 0
+      }
+    ],
+    "stock": 6
+  },
+  {
+    "id": "nike-black4",
+    "brand": "Nike",
+    "name": "Nike Air Jordan 4 — Black",
+    "category": "shoes",
+    "image": "/images/black4.webp",
+    "badge": "-15%",
+    "rating": 5,
+    "reviews": 203,
+    "price": 7500,
+    "salePrice": 6375,
+    "sizes": [
+      {
+        "size": "41",
+        "stock": 0
+      },
+      {
+        "size": "42",
+        "stock": 0
+      },
+      {
+        "size": "43",
+        "stock": 0
+      },
+      {
+        "size": "44",
+        "stock": 0
+      }
+    ],
+    "stock": 0
+  },
+  {
+    "id": "nike-brown",
+    "brand": "Nike",
+    "name": "Nike Classic — Brown",
+    "category": "shoes",
+    "image": "/images/NikeBrown.png",
+    "badge": "New",
+    "rating": 4,
+    "reviews": 41,
+    "price": 7200,
+    "salePrice": null,
+    "sizes": [
+      {
+        "size": "40",
+        "stock": 4
+      },
+      {
+        "size": "41",
+        "stock": 4
+      },
+      {
+        "size": "42",
+        "stock": 5
+      },
+      {
+        "size": "43",
+        "stock": 4
+      }
+    ],
+    "stock": 17
+  },
+  {
+    "id": "nike-red",
+    "brand": "Nike",
+    "name": "Nike Air Force 1 — Red",
+    "category": "shoes",
+    "image": "/images/red.avif",
+    "badge": "New",
+    "rating": 5,
+    "reviews": 128,
+    "price": 7800,
+    "salePrice": null,
+    "sizes": [
+      {
+        "size": "40",
+        "stock": 3
+      },
+      {
+        "size": "41",
+        "stock": 4
+      },
+      {
+        "size": "42",
+        "stock": 5
+      },
+      {
+        "size": "43",
+        "stock": 2
+      }
+    ],
+    "stock": 14
+  },
+  {
+    "id": "nike-white",
+    "brand": "Nike",
+    "name": "Nike Air Force 1 — White",
+    "category": "shoes",
+    "image": "/images/white.jpeg",
+    "badge": null,
+    "rating": 4,
+    "reviews": 156,
+    "price": 7800,
+    "salePrice": null,
+    "sizes": [
+      {
+        "size": "39",
+        "stock": 3
+      },
+      {
+        "size": "40",
+        "stock": 4
+      },
+      {
+        "size": "41",
+        "stock": 5
+      },
+      {
+        "size": "42",
+        "stock": 5
+      },
+      {
+        "size": "43",
+        "stock": 4
+      }
+    ],
+    "stock": 21
+  },
+  {
+    "id": "converse-black",
+    "brand": "Converse",
+    "name": "Converse Chuck Taylor — Black",
+    "category": "shoes",
+    "image": "/images/converseB.avif",
+    "badge": null,
+    "rating": 4,
+    "reviews": 77,
+    "price": 5600,
+    "salePrice": null,
+    "sizes": [
+      {
+        "size": "38",
+        "stock": 2
+      },
+      {
+        "size": "39",
+        "stock": 3
+      },
+      {
+        "size": "40",
+        "stock": 3
+      },
+      {
+        "size": "41",
+        "stock": 2
+      }
+    ],
+    "stock": 10
+  },
+  {
+    "id": "converse-white",
+    "brand": "Converse",
+    "name": "Converse Chuck Taylor — White",
+    "category": "shoes",
+    "image": "/images/converseW.avif",
+    "badge": "New",
+    "rating": 5,
+    "reviews": 211,
+    "price": 5600,
+    "salePrice": null,
+    "sizes": [
+      {
+        "size": "38",
+        "stock": 2
+      },
+      {
+        "size": "39",
+        "stock": 2
+      },
+      {
+        "size": "40",
+        "stock": 2
+      },
+      {
+        "size": "41",
+        "stock": 3
+      }
+    ],
+    "stock": 9
+  },
+  {
+    "id": "nb-1",
+    "brand": "New Balance",
+    "name": "New Balance 550",
+    "category": "shoes",
+    "image": "/images/NB1.webp",
+    "badge": "New",
+    "rating": 5,
+    "reviews": 88,
+    "price": 9200,
+    "salePrice": null,
+    "sizes": [
+      {
+        "size": "40",
+        "stock": 4
+      },
+      {
+        "size": "41",
+        "stock": 4
+      },
+      {
+        "size": "42",
+        "stock": 5
+      },
+      {
+        "size": "43",
+        "stock": 4
+      }
+    ],
+    "stock": 17
+  },
+  {
+    "id": "nb-2",
+    "brand": "New Balance",
+    "name": "New Balance 574",
+    "category": "shoes",
+    "image": "/images/NB2.webp",
+    "badge": null,
+    "rating": 4,
+    "reviews": 59,
+    "price": 8900,
+    "salePrice": null,
+    "sizes": [
+      {
+        "size": "40",
+        "stock": 2
+      },
+      {
+        "size": "41",
+        "stock": 3
+      },
+      {
+        "size": "42",
+        "stock": 2
+      },
+      {
+        "size": "43",
+        "stock": 1
+      }
+    ],
+    "stock": 8
+  },
+  {
+    "id": "nb-3",
+    "brand": "New Balance",
+    "name": "New Balance 990",
+    "category": "shoes",
+    "image": "/images/NB3.webp",
+    "badge": "New",
+    "rating": 5,
+    "reviews": 134,
+    "price": 11500,
+    "salePrice": 9775,
+    "sizes": [
+      {
+        "size": "40",
+        "stock": 3
+      },
+      {
+        "size": "41",
+        "stock": 3
+      },
+      {
+        "size": "42",
+        "stock": 3
+      },
+      {
+        "size": "43",
+        "stock": 2
+      }
+    ],
+    "stock": 11
+  },
+  {
+    "id": "nb-4",
+    "brand": "New Balance",
+    "name": "New Balance 327",
+    "category": "shoes",
+    "image": "/images/NB4.webp",
+    "badge": null,
+    "rating": 4,
+    "reviews": 46,
+    "price": 8700,
+    "salePrice": null,
+    "sizes": [
+      {
+        "size": "39",
+        "stock": 2
+      },
+      {
+        "size": "40",
+        "stock": 2
+      },
+      {
+        "size": "41",
+        "stock": 3
+      },
+      {
+        "size": "42",
+        "stock": 2
+      }
+    ],
+    "stock": 9
+  },
+  {
+    "id": "nb-5",
+    "brand": "New Balance",
+    "name": "New Balance 2002R",
+    "category": "shoes",
+    "image": "/images/NB5.webp",
+    "badge": "New",
+    "rating": 5,
+    "reviews": 71,
+    "price": 12300,
+    "salePrice": null,
+    "sizes": [
+      {
+        "size": "40",
+        "stock": 1
+      },
+      {
+        "size": "41",
+        "stock": 1
+      },
+      {
+        "size": "42",
+        "stock": 2
+      },
+      {
+        "size": "43",
+        "stock": 1
+      }
+    ],
+    "stock": 5
+  },
+  {
+    "id": "leather-belt-black",
+    "brand": "StrideX",
+    "name": "Classic Leather Belt — Black",
+    "category": "belts",
+    "image": "/images/website8.jpg",
+    "badge": null,
+    "rating": 5,
+    "reviews": 12,
+    "price": 2200,
+    "salePrice": null,
+    "stock": 30
+  },
+  {
+    "id": "bifold-wallet-brown",
+    "brand": "StrideX",
+    "name": "Bifold Leather Wallet — Brown",
+    "category": "wallets",
+    "image": "/images/website10.jpg",
+    "badge": null,
+    "rating": 4,
+    "reviews": 8,
+    "price": 3200,
+    "salePrice": null,
+    "stock": 18
+  },
+  {
+    "id": "crew-socks-3pack",
+    "brand": "StrideX",
+    "name": "Crew Socks — 3 Pack",
+    "category": "socks",
+    "image": "/images/website11.jpg",
+    "badge": null,
+    "rating": 5,
+    "reviews": 41,
+    "price": 950,
+    "salePrice": null,
+    "stock": 60
+  },
+  {
+    "id": "sneaker-cleaner-kit",
+    "brand": "StrideX",
+    "name": "Sneaker Cleaner Kit",
+    "category": "care",
+    "image": "/images/website12.jpg",
+    "badge": "New",
+    "rating": 5,
+    "reviews": 19,
+    "price": 1800,
+    "salePrice": 1530,
+    "stock": 22
+  },
+  {
+    "id": "cardholder-wallet",
+    "brand": "StrideX",
+    "name": "Slim Cardholder Wallet",
+    "category": "wallets",
+    "image": "/images/website13.jpg",
+    "badge": null,
+    "rating": 4,
+    "reviews": 6,
+    "price": 1950,
+    "salePrice": null,
+    "stock": 25
+  }
+]
